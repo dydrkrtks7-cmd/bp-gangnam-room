@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 · rz-gangnam-room</title>
+  <meta name="description" content="rz-gangnam-room에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://ujangsan-room-note.go-apgujeong-nrb.xyz/posts.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+        /* Base Reset & Variables */
+        :root {
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-serif: Georgia, "Times New Roman", serif;
+            --color-bg: #fafafa;
+            --color-text: #333;
+            --color-text-light: #666;
+            --color-primary: #2c3e50;
+            --color-border: #e0e0e0;
+            --color-card-bg: #fff;
+            --spacing-1: 0.5rem;
+            --spacing-2: 1rem;
+            --spacing-3: 1.5rem;
+            --spacing-4: 2rem;
+            --spacing-5: 2.5rem;
+            --max-width: 1200px;
+            --header-height: 70px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            padding-top: var(--header-height);
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Random-class Pattern: all classes follow "t-ico-85f4" */
+        .n-list-je6n-center {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: var(--spacing-3);
+        }
+        /* Navigation */
+        .v-box-iv08-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: var(--color-card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+        .v-box-iv08-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--spacing-3);
+        }
+        .v-box-iv08-brand {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+        .v-box-iv08-links {
+            display: flex;
+            gap: var(--spacing-3);
+        }
+        .v-box-iv08-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--color-text-light);
+            transition: color 0.2s;
+        }
+        .v-box-iv08-links a:hover {
+            color: var(--color-primary);
+        }
+        /* Hamburger Menu (for mobile) */
+        .t-ico-85f4-hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .t-ico-85f4-hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-primary);
+            margin: 2px 0;
+            transition: all 0.3s;
+        }
+        /* Responsive Layout */
+        .t-ico-85f4-article {
+            background: var(--color-card-bg);
+            padding: var(--spacing-4);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .t-ico-85f4-article-header {
+            text-align: center;
+            margin-bottom: var(--spacing-4);
+        }
+        .t-ico-85f4-article-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-1);
+            line-height: 1.2;
+        }
+        .t-ico-85f4-article-meta {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+        .t-ico-85f4-article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .t-ico-85f4-article-content p {
+            margin-bottom: var(--spacing-3);
+        }
+        .t-ico-85f4-article-content h2 {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin: var(--spacing-4) 0 var(--spacing-2);
+            padding-bottom: var(--spacing-1);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .t-ico-85f4-article-content ul {
+            list-style: none;
+            margin-bottom: var(--spacing-3);
+            padding-left: var(--spacing-2);
+        }
+        .t-ico-85f4-article-content ul li {
+            margin-bottom: var(--spacing-1);
+            position: relative;
+            padding-left: var(--spacing-2);
+        }
+        .t-ico-85f4-article-content ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+        }
+        .t-ico-85f4-article-content strong {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+        .t-ico-85f4-article-content em {
+            font-style: italic;
+            color: var(--color-text-light);
+        }
+        /* FAQ Section */
+        .t-ico-85f4-faq-section {
+            margin-top: var(--spacing-5);
+            padding-top: var(--spacing-4);
+            border-top: 1px solid var(--color-border);
+        }
+        .t-ico-85f4-faq-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-3);
+            text-align: center;
+        }
+        .t-ico-85f4-faq-item {
+            margin-bottom: var(--spacing-3);
+        }
+        .t-ico-85f4-faq-question {
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-1);
+        }
+        .t-ico-85f4-faq-answer {
+            color: var(--color-text-light);
+            padding-left: var(--spacing-2);
+            border-left: 2px solid var(--color-border);
+        }
+        /* Footer */
+        .t-ico-85f4-footer {
+            text-align: center;
+            padding: var(--spacing-4);
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            border-top: 1px solid var(--color-border);
+            margin-top: var(--spacing-5);
+        }
+        /* Responsive: 768px breakpoint */
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 60px;
+            }
+            .v-box-iv08-links {
+                display: none;
+            }
+            .t-ico-85f4-hamburger {
+                display: flex;
+            }
+            .t-ico-85f4-article-title {
+                font-size: 1.6rem;
+            }
+            .t-ico-85f4-article-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+  <meta property="og:title" content="글 목록 · rz-gangnam-room">
+  <meta property="og:description" content="rz-gangnam-room에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://ujangsan-room-note.go-apgujeong-nrb.xyz/posts.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    <header class="v-box-iv08-wrapper">
+        <div class="v-box-iv08-inner">
+            <a href="/" class="v-box-iv08-brand">우장산 룸싸롱 정보</a>
+            <nav class="v-box-iv08-links">
+                <a href="/">홈</a>
+                <a href="/guide">이용 가이드</a>
+                <a href="/blog">블로그</a>
+            </nav>
+            <div class="t-ico-85f4-hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 2개</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260731-0034.html">우장산 룸싸롱 시세 및 관련 안내</a>
+        <p class="post-item__summary">우장산 일대의 룸싸롱 시세 정보를 파악하고자 할 때에는 개별 업소의 부대비용과 서비스 제공 범위, 인원수에 따른 총 비용 구조를 사전에 점검하는 것이 중요합니다. 유흥 관련 비용은 단순 이용료 외에</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/gemini-coverage-20260731-0043.html">우장산 룸싸롱 시세 및 이용 안내</a>
+        <p class="post-item__summary">우장산 일대 상권은 방문 목적과 인원수에 따라 다양한 형태의 유흥 시설이 운영되는 지역입니다. 해당 지역의 유흥업소를 이용하기 전에 전체적인 이용 체계와 비용 구성을 미리 확인하는 것은 효율적인 계</p>
+      </li>
+      </ul>
+
+    </main>
+  </div>
+</body>
+</html>
